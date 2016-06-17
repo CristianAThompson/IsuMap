@@ -94,7 +94,7 @@ let ViewModel = function() {
               return function() {
                 infoWindow.open(self.map, dog);//problem: Uncaught TypeError: Cannot read property 'apply' of undefined whenever I want a infoWindow reopened
               }
-            })(model.markers()[i]));
+            })(infoWindow));
             //infoWindow.close(); if all the opend markers are annoying
         }
 
