@@ -92,9 +92,9 @@ let ViewModel = function() {
             });
             model.markers()[i].addListener('click', (function(dog) {//add an info window to each element
               return function() {
-                infoWindow.open(self.map, model.markers()[dog]);//problem: Uncaught TypeError: Cannot read property 'apply' of undefined whenever I want a infoWindow reopened
+                infoWindow.open(self.map, dog);//problem: Uncaught TypeError: Cannot read property 'apply' of undefined whenever I want a infoWindow reopened
               }
-            })(i));
+            })(model.markers()[i]));
             //infoWindow.close(); if all the opend markers are annoying
         }
 
