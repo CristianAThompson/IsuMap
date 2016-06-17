@@ -90,8 +90,8 @@ let ViewModel = function() {
             infoWindow = new google.maps.InfoWindow({
                     content: '<div>' + model.markers()[i].getTitle() + '</div>'
             });
-            model.markers()[i].addListener('click', (function([i]) {//add an info window to each element
-                infoWindow.open(self.map, model.markers()[i]);//problem: Uncaught TypeError: Cannot read property 'apply' of undefined whenever I want a infoWindow reopened
+            model.markers()[i].addListener('click', (function(dog) {//add an info window to each element
+                infoWindow.open(self.map, model.markers()[dog]);//problem: Uncaught TypeError: Cannot read property 'apply' of undefined whenever I want a infoWindow reopened
             })(i));
             //infoWindow.close(); if all the opend markers are annoying
         }
