@@ -86,15 +86,18 @@ let ViewModel = function() {
             }
         }
         for(let i = 0; i < model.markers().length; i++) {
+            self.list().push(model.markers()[i].getTitle());//send the names to list view
             infoWindow = new google.maps.InfoWindow({
                     content: '<div>' + model.markers()[i].getTitle() + '</div>'
             });
             model.markers()[i].addListener('click', (function(dog) {//add an info window to each element
+              return function() {
                 infoWindow.open(self.map, model.markers()[dog]);//problem: Uncaught TypeError: Cannot read property 'apply' of undefined whenever I want a infoWindow reopened
+              }
             })(i));
             //infoWindow.close(); if all the opend markers are annoying
         }
-        self.list().push(model.markers()[i].getTitle());//send the names to list view
+
         self.map.setCenter(bounds.getCenter());
         self.map.fitBounds(bounds);
     }
